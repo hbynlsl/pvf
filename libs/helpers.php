@@ -1,6 +1,14 @@
 <?php
 
+use pvf\DB;
 use pvf\View;
+
+/**
+ * 获取数据库对象
+ */
+function db() {
+    return DB::getInstance();
+}
 
 /**
  * 发送JSON响应
@@ -109,7 +117,10 @@ function env($param = '') {
     $sajson = json_encode($segmentArray);
     putenv("$segment=$sajson}");
     // 返回结果
-    return $_ENV[$param];
+    if ($param) {
+        return $_ENV[$param];
+    }
+    return '';
 }
 
 /**
