@@ -9,3 +9,4 @@ public/dist/
 .vscode
 pnpm-lock.yaml
 composer.lock
+node_modules/
