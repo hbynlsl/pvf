@@ -1,6 +1,7 @@
-/vendor
-/node_modules
-/runtime
+vendor/
+node_modules/
+runtime/
+public/dist/
 .env
 *.db
 *.sqlite
