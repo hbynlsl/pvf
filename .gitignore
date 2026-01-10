@@ -8,3 +8,4 @@ public/dist/
 .DS_STORE
 .vscode
 pnpm-lock.yaml
+composer.lock

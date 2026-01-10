@@ -16,6 +16,8 @@ class Application {
      * 初始化配置
      */
     protected static function _init() {
+        // 加载.env环境变量
+        env();
         // 添加路由
         require_once root_path() . '/app/routes.php';
     }
