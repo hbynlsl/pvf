@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "pvf\\": "libs/",
+            "app\\": "app/"
+        }, 
+        "files": [
+            "libs/helpers.php"
+        ]
+    }
+}
