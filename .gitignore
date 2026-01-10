@@ -7,3 +7,4 @@ public/dist/
 *.sqlite
 .DS_STORE
 .vscode
+pnpm-lock.yaml
