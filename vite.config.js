@@ -36,7 +36,7 @@ export default defineConfig({
     origin: 'http://localhost:5173' // 新增：指定Vite服务的源地址，关键！
   },
   build: {
-    outDir: 'public/dist',
+    outDir: 'public/assets',
     assetsDir: '',
     copyPublicDir: false,
     // 关键：关闭文件名哈希
