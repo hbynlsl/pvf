@@ -9,6 +9,6 @@ Router::get('/', 'IndexController@index');
 Router::get('/show/:id', 'IndexController@show');
 Router::get('/score', function($params) {
     // 数据库操作
-    $rows = db()->select('score_querys', '*');
+    $rows = db()->count('score_querys');
     print_r($rows);
 });
