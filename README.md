@@ -26,6 +26,20 @@ Open the other terminal, run the vue program.
 npm run dev
 ```
 
+（4）build & public
+
+Before public the app, you first should run the command `npm run build` in the terminal. Then the assets resources will created in `/public/assets` directory. The second step is uncomment the `/app/views/layout.html` file.
+
+```html
+<!-- ✅ 核心2：引入Vite的开发服务（开发环境） -->
+<!-- <script type="module" src="http://localhost:5173/resources/js/app.js"></script> -->
+<!-- 生产环境部署 -->
+<script type="module" src="/assets/app.js"></script>
+<link rel="stylesheet" href="/assets/style.css">
+```
+
+After that, upload the `/app`, `/public`, `/libs`, `/config`, `/vendor`, `/runtime`, `/.env` directories & files onto your server. The `/node_modules`, `/resources` directories are not need to upload.
+
 ### 2. php development
 （1）routes
 
@@ -165,3 +179,15 @@ db()                    // get the database handler, as medoo object
 view($viewFile)         // get the view template handler, as the controller method $this->fetch()
 json(array $responseDatas, int $statusCode)           // response the json datas
 ```
+
+### 3. vue development
+
+The vue files are in the `/resources` directory, it uses `vite` build tools (the config is `/vite.config.js`). In the `pvf` project, there has added `ElementPlus` & `Vant` supported.
+
+（1）`/resources/js`
+
+The `/resources/js/app.js` file is the main bootstrap file, your `vue3` app will be created in this file. Otherwise, all of your components will be registered in this file. And your own components will be created in the `/resources/js/components` directory. All of your components are SPA component, so you can use any of the `Vue3` rules. 
+
+（2）`/resources/css`
+
+This directory will contain all of your own style files.
