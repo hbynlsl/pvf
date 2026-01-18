@@ -1,5 +1,7 @@
 {block name="content"}
-    <h1>text = {$text}</h1>
+    {foreach $msgs as $msg}
+        <p>{$msg}</p>
+    {/foreach}
     
     <hello-world></hello-world>
 {/block}

@@ -5,9 +5,13 @@ use pvf\Controller;
 
 class IndexController extends Controller {
     public function index($params) {
-        $text = "测试";
+        $msgs = [
+            '欢迎使用 PVF 框架！',
+            '这是一个轻量级的 PHP MVC 框架。',
+            '希望你喜欢它！',
+        ];
         $this->assign([
-            'text'  =>  $text,
+            'msgs'  =>  $msgs,
         ]);
         return $this->fetch();
     }
@@ -16,5 +20,10 @@ class IndexController extends Controller {
         return json([
             'show-id' => $params['id']
         ]);
+    }
+
+    public static function about($params) {
+        $info = "这是一个关于页面。";
+        echo $info;
     }
 }

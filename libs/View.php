@@ -64,10 +64,10 @@ class View {
         $content = file_get_contents($templateFile);
         // 2. 实时编译模板（compile方法完全不变）
         $content = $this->compile($content);
+        // var_dump($content);exit;
         // 3. 提取变量到当前作用域
         extract($this->vars, EXTR_OVERWRITE);
         // 4. 渲染编译后的PHP代码
-        // var_dump($content);exit;
         ob_start();
         eval('?>' . $content); 
         return ob_get_clean();
@@ -125,18 +125,18 @@ class View {
         }, $content);
 
         // 4. 条件判断标签 容错处理
-        $content = preg_replace('/\{if\s+(.*?)\}/', '<?php if(isset($1) && $1): ?>', $content);
-        $content = preg_replace('/\{\elseif\s+(.*?)\}/', '<?php elseif(isset($1) && $1): ?>', $content);
-        $content = preg_replace('/\{else\}/', '<?php else: ?>', $content);
-        $content = preg_replace('/\{\/if\}/', '<?php endif; ?>', $content);
+        $content = preg_replace('/\{if\s+(.*?)\}/', '<?php if(isset($1) && $1) { ?>', $content);
+        $content = preg_replace('/\{\elseif\s+(.*?)\}/', '<?php  } elseif(isset($1) && $1) { ?>', $content);
+        $content = preg_replace('/\{else\}/', '<?php } else { ?>', $content);
+        $content = preg_replace('/\{\/if\}/', '<?php } ?>', $content);
 
         // 5. 循环标签 容错处理
         $content = preg_replace_callback('/\{foreach\s+(.*?)\s+as\s+(.*?)\}/', function ($matches) {
-            $arrName = trim($matches[1]);
-            $itemStr = trim($matches[2]);
-            return '<?php if(isset($'.$arrName.') && is_array($'.$arrName.') && !empty($'.$arrName.')) foreach($'.$arrName.' as '.$itemStr.'): ?>';
+            $arrName = trim($matches[1], '$');
+            $itemStr = trim($matches[2], '$');
+            return '<?php if(isset($'.$arrName.') && is_array($'.$arrName.')) foreach($'.$arrName.' as $'.$itemStr.') { ?>';
         }, $content);
-        $content = preg_replace('/\{\/foreach\}/', '<?php endforeach; endif; ?>', $content);
+        $content = preg_replace('/\{\/foreach\}/', '<?php } ?>', $content);        
 
         return $content;
     }
