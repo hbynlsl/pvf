@@ -78,7 +78,7 @@ class IndexController extends Controller {
 }
 ```
 
-After your controller extends the `pvf\Controller`, you can call `$this->assign($param, $val)` method pass the variable to the view-file. Also, you can use the `$this->fetch()` to show the view-file, by default the file name is the current action name, or you can transfer the exactly file-name to the `$this->fetch('your file name')` method.
+After your controller extends the `pvf\Controller`, you can call `$this->assign($param, $val)` method to pass the variable to the view-file. Also, you can use the `$this->fetch()` to show the view-file, by default the file name is the current action name, or you can transfer the exactly file-name to the `$this->fetch('your file name')` method.
 
 （3）view
 
